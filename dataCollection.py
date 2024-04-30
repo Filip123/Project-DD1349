@@ -34,7 +34,7 @@ for session in sessions2023:
     dataDriver = json.loads(response.read().decode('utf-8'))
     allSessionData.extend(dataDriver)
 
-keysToIncludeDriver = ['driver_number','name_acronym', 'name_acronym', 'full_name']
+keysToIncludeDriver = ['driver_number','name_acronym', 'full_name']
 
 #Delete Dublicates
 dfDriver = pd.DataFrame(allSessionData)
