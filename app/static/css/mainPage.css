@@ -1,0 +1,16 @@
+.main-header{
+    color: #de3163;
+    font-size: 50px;
+}
+
+#race-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+
+    list-style: none;
+}
+
+.race-picture{
+    width: 25%;
+}
