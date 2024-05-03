@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainPage.css') }}">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1 class="main-header">Welcome to the F1 Map Tracker</h1>
+</header>
+<main>
+    
+
+    <ul id ="race-list">
+        <li class="race-class" id="race-nr1">
+            <a href="{{ url_for('race_view') }}" ><img class="race-picture" src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}" alt="Picutre of Singapore Circuit"></a>
+        </li>
+    </ul>
+    
+</main>
+{% endblock %}
