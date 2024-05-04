@@ -1,7 +1,6 @@
 from app import app
 from flask import jsonify, render_template
 
-
 #Home page
 @app.route("/")
 def index():
@@ -14,7 +13,7 @@ def get_coordinates():
 
 def movebackwards():
     pass
-
+  
 @app.route('/race-view')
 def race_view():
     return render_template('raceview.html')
