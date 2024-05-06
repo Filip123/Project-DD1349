@@ -11,36 +11,57 @@
         </a></button>
 
     <script>
-        function fetchCoordinates(currentTime) {
-            console.log("Fetch function working");
-            console.log("Current time: " + currentTime);
-            var url = '/get-coordinates?currentTime=' + currentTime;
+        let currentInterval; // Declare outside to clear it properly
 
+        function fetchCoordinates(currentTime) {
+            console.log("Current time: " + currentTime);
+            const url = '/get-coordinates?currentTime=' + currentTime;
+            let currentDateTime = new Date(currentTime); // Declare as local
+
+            clearInterval(currentInterval); // Clear existing interval
             fetch(url)
                 .then(response => response.json())
                 .then(coordinates => {
-                    var test = document.getElementById("test-driver");
-                    var coordinateIndex = 0;
+                    const test = document.getElementById("test-driver");
+                    let coordinateIndex = 0;
+                    const scaleFactor = 20;
+                    const timeInterval = 100;
 
-                    // Scale factor for coordinates
-                    const scaleFactor = 10;
-                    const timeInterval = 500;
+                    raceTrack = document.getElementById("race-track")
+                    const trackWidth = raceTrack.offsetWidth;
+                    const trackHeight = raceTrack.offsetHeight;
 
-                    setInterval(function () {
+                    currentInterval = setInterval(() => {
                         if (coordinateIndex < coordinates.length) {
-                            var x = coordinates[coordinateIndex][0] / scaleFactor;  // Dividing by scaleFactor
-                            var y = coordinates[coordinateIndex][1] / scaleFactor;  // Dividing by scaleFactor
-                            test.style.left = x + 'px';
-                            test.style.top = y + 'px';
+                            const x = coordinates[coordinateIndex][0] / scaleFactor;
+                            const y = coordinates[coordinateIndex][1] / scaleFactor;
+                           
+                            test.style.left = (trackWidth / 2 + x - test.offsetWidth / 2) + 'px';
+                            test.style.top = (trackHeight / 2 + y - test.offsetHeight / 2) + 'px';
+                            
                             coordinateIndex++;
+                        
                         } else {
-                            //fetch new coordinates based on current time.
+                            clearInterval(currentInterval); // Stop the interval when coordinates are exhausted
+                            currentDateTime.setSeconds(currentDateTime.getSeconds() + 10);
+                            fetchCoordinates(formatDate(currentDateTime)); // Call recursively with new time
                         }
-                    }, timeInterval); // Adjust interval as needed
+                    }, timeInterval);
                 })
                 .catch(error => {
                     console.error('Error fetching coordinates:', error);
+                    clearInterval(currentInterval); // Clear on error
                 });
+            
+        }
+        function formatDate(date) {
+        // Utility function to format date to string
+            return date.getFullYear() + '-' +
+            ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+            ('0' + date.getDate()).slice(-2) + 'T' +
+            ('0' + date.getHours()).slice(-2) + ':' +
+            ('0' + date.getMinutes()).slice(-2) + ':' +
+            ('0' + date.getSeconds()).slice(-2);
         }
     </script>
     <div id="race-track">
