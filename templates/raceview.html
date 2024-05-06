@@ -1,49 +1,56 @@
 {% extends "layout.html" %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raceview.css') }}"> 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raceview.css') }}">
 {% endblock %}
 
 {% block content %}
 <main>
-    <button id = "return-button" ><a href="{{ url_for('index') }}">
-        <p>Return</p>
-    </a></button>
+    <button id="return-button"><a href="{{ url_for('index') }}">
+            <p>Return</p>
+        </a></button>
 
     <script>
-function fetchCoordinates() {
-    fetch('/get-coordinates')
-    .then(response => response.json())
-    .then(coordinates => {
-        var test = document.getElementById("test-driver");
-        var coordinateIndex = 0;
+        function fetchCoordinates(currentTime) {
+            console.log("Fetch function working");
+            console.log("Current time: " + currentTime);
+            var url = '/get-coordinates?currentTime=' + currentTime;
 
-        // Scale factor for coordinates
-        const scaleFactor = 10;
+            fetch(url)
+                .then(response => response.json())
+                .then(coordinates => {
+                    var test = document.getElementById("test-driver");
+                    var coordinateIndex = 0;
 
-        setInterval(function() {
-            if (coordinateIndex < coordinates.length) {
-                var x = coordinates[coordinateIndex][0] / scaleFactor;  // Dividing by scaleFactor
-                var y = coordinates[coordinateIndex][1] / scaleFactor;  // Dividing by scaleFactor
-                test.style.left = x + 'px';
-                test.style.top = y + 'px';
-                coordinateIndex++;
-            }
-        }, 100); // Adjust interval as needed
-    })
-    .catch(error => {
-        console.error('Error fetching coordinates:', error);
-    });
-}
+                    // Scale factor for coordinates
+                    const scaleFactor = 10;
+                    const timeInterval = 500;
+
+                    setInterval(function () {
+                        if (coordinateIndex < coordinates.length) {
+                            var x = coordinates[coordinateIndex][0] / scaleFactor;  // Dividing by scaleFactor
+                            var y = coordinates[coordinateIndex][1] / scaleFactor;  // Dividing by scaleFactor
+                            test.style.left = x + 'px';
+                            test.style.top = y + 'px';
+                            coordinateIndex++;
+                        } else {
+                            //fetch new coordinates based on current time.
+                        }
+                    }, timeInterval); // Adjust interval as needed
+                })
+                .catch(error => {
+                    console.error('Error fetching coordinates:', error);
+                });
+        }
     </script>
     <div id="race-track">
         <div id="test-driver"></div>
     </div>
-    
+
     <div id="buttonDiv">
-        <button class ="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-        <button class ="nextPreviousButtons" name="previous" onclick="fetchCoordinates()">+</button>
+        <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
+        <button class="nextPreviousButtons" name="previous" onclick="fetchCoordinates('2023-03-05T16:00:00')">+</button>
     </div>
-    
+
 </main>
 {% endblock %}
