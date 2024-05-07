@@ -35,12 +35,12 @@
                         if (coordinateIndex < coordinates.length) {
                             const x = coordinates[coordinateIndex][0] / scaleFactor;
                             const y = coordinates[coordinateIndex][1] / scaleFactor;
-                           
+
                             test.style.left = (trackWidth / 2 + x - test.offsetWidth / 2) + 'px';
                             test.style.top = (trackHeight / 2 + y - test.offsetHeight / 2) + 'px';
-                            
+
                             coordinateIndex++;
-                        
+
                         } else {
                             clearInterval(currentInterval); // Stop the interval when coordinates are exhausted
                             currentDateTime.setSeconds(currentDateTime.getSeconds() + 10);
@@ -52,16 +52,16 @@
                     console.error('Error fetching coordinates:', error);
                     clearInterval(currentInterval); // Clear on error
                 });
-            
+
         }
         function formatDate(date) {
-        // Utility function to format date to string
+            // Utility function to format date to string
             return date.getFullYear() + '-' +
-            ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
-            ('0' + date.getDate()).slice(-2) + 'T' +
-            ('0' + date.getHours()).slice(-2) + ':' +
-            ('0' + date.getMinutes()).slice(-2) + ':' +
-            ('0' + date.getSeconds()).slice(-2);
+                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                ('0' + date.getDate()).slice(-2) + 'T' +
+                ('0' + date.getHours()).slice(-2) + ':' +
+                ('0' + date.getMinutes()).slice(-2) + ':' +
+                ('0' + date.getSeconds()).slice(-2);
         }
     </script>
     <div id="race-track">
