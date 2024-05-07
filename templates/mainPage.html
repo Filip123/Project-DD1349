@@ -2,20 +2,24 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainPage.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}"> 
 {% endblock %}
 
 {% block content %}
-<header>
-    <h1 class="main-header">Welcome to the F1 Map Tracker</h1>
-</header>
+
 <main>
     
 
-    <ul id ="race-list">
-        <li class="race-class" id="race-nr1">
-            <a href="{{ url_for('race_view') }}" ><img class="race-picture" src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}" alt="Picutre of Singapore Circuit"></a>
-        </li>
-    </ul>
+    <div id ="raceList">
+        <div class="raceClass" id="race-nr1">
+            <a href="{{ url_for('race_view') }}" ><img class="racePicture" src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}" alt="Picutre of Singapore Circuit">
+                <p>Singapore</p>
+            </a>
+        </div>
+        <div class="raceClass" id="race-nr2">
+            <a><img></a>
+        </div>
+    </div>
     
 </main>
 {% endblock %}
