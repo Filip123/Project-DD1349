@@ -2,10 +2,17 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raceview.css') }}"> 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}"> 
 {% endblock %}
 
 {% block content %}
 <main>
+    <div id="infoBar">
+        <div class="infoBarItem">Singapore</div>
+        <div class="infoBarItem">Lap 5/57</div>
+        <div class="infoBarItem">Time: 15:30:07</div>   
+    </div>
+    
     <button id = "return-button" ><a href="{{ url_for('index') }}">
         <p>Return</p>
     </a></button>
@@ -15,7 +22,7 @@ function fetchCoordinates() {
     fetch('/get-coordinates')
     .then(response => response.json())
     .then(coordinates => {
-        var test = document.getElementById("test-driver");
+        var test = document.getElementById("testDriver");
         var coordinateIndex = 0;
 
         // Scale factor for coordinates
@@ -37,7 +44,7 @@ function fetchCoordinates() {
 }
     </script>
     <div id="race-track">
-        <div id="test-driver"></div>
+        <div id="testDriver"></div>
     </div>
     
     <div id="buttonDiv">
