@@ -1,16 +1,32 @@
-.main-header{
-    color: #de3163;
-    font-size: 50px;
+p {
+    font-size: x-large;
 }
 
-#race-list{
+#raceList{
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
-
-    list-style: none;
+    justify-content: center;
 }
 
-.race-picture{
-    width: 25%;
+.racePicture{
+    max-height: 30vh;
+    max-width: 30vw;
+
+}
+
+
+.raceClass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    border: solid 10px rgb(86, 44, 44);
+    background-color: var(--stdGray);
+
+    text-align: center;
+
+    margin: 60px auto;
+    width: 40vw;
+    height: 40vh;
 }
