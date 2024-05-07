@@ -66,42 +66,6 @@ print(dfDriver)
 addToTable(dfDriver, "driver")
 
 
-#Test data table:
-
-# Create a SQLite connection
-conn = sqlite3.connect('database.db')
-
-# Create a cursor object
-cursor = conn.cursor()
-
-# Execute a SELECT query to retrieve a driver
-cursor.execute("SELECT * FROM country LIMIT 1")
-country = cursor.fetchone()
-
-# Close the cursor and connection
-cursor.close()
-conn.close()
-
-# Print the retrieved driver
-print(country)
-
-# Create a SQLite connection
-conn = sqlite3.connect('database.db')
-
-# Create a cursor object
-cursor = conn.cursor()
-
-# Execute a SELECT query to retrieve a driver
-cursor.execute("SELECT * FROM driver LIMIT 1")
-driver = cursor.fetchone()
-
-# Close the cursor and connection
-cursor.close()
-conn.close()
-
-# Print the retrieved driver
-print(driver)
-
 #Driver Position
 
 # print(sessions2023)
