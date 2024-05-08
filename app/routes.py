@@ -1,11 +1,14 @@
 from app import app
-import visualCar
+
+import app.src.visualCar as visualCar
+import app.src.databaseAccess as databaseAccess
 from flask import jsonify, render_template, request
 
 #Home page
 @app.route("/")
 def index():
-    return render_template("mainPage.html")
+    session_country_list = databaseAccess.fetch_session_data()
+    return render_template("mainPage.html", session_country_list=session_country_list)
 
 @app.route("/get-coordinates")
 def get_coordinates():
