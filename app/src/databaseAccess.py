@@ -1,7 +1,7 @@
 import sqlite3
 
 def fetch_session_data():
-    database_file = "database.db"
+    database_file = "app/src/database/database.db"
     
     conn = sqlite3.connect(database_file)
     cursor = conn.cursor()
