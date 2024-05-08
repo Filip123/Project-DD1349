@@ -15,7 +15,7 @@ def createDataFrame(data, keysToInclude: list[str]) -> pd.DataFrame:
 
 
 def addToTable(dataFrame: pd.DataFrame, table_name:str):
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('app/src/database/database.db')
     cur = conn.cursor()
     dataFrame.to_sql(table_name, conn, if_exists='append', index=False)
     conn.commit()
@@ -29,7 +29,7 @@ def initialize_database(schema_file, db_file):
     conn.close()
 
 # Call this function once at the initialization phase of your application
-initialize_database('schema.sql', 'database.db')
+initialize_database('schema.sql', 'app/src/database/database.db')
 
 
 #Session

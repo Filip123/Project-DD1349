@@ -1,7 +1,7 @@
 import sqlite3
 
 def fetch_session_data():
-    database_file = "database.db"
+    database_file = "app/src/database/database.db"
     
     conn = sqlite3.connect(database_file)
     cursor = conn.cursor()
@@ -14,7 +14,6 @@ def fetch_session_data():
 
     rowsDataList = []
     for row in rows:
-        print(row)
         session_key = row[0]
         country_key = row[1]
         year = row[2]
@@ -25,7 +24,6 @@ def fetch_session_data():
         
         if country_name_row:
             country_name = country_name_row[0]
-            print(country_name)
         else:
             print("Country name not found for country key:", country_key)
 

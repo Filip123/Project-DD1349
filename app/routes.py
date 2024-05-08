@@ -1,7 +1,7 @@
 from app import app
 
-import visualCar
-import databaseAccess
+import app.src.visualCar as visualCar
+import app.src.databaseAccess as databaseAccess
 from flask import jsonify, render_template, request
 
 #Home page
