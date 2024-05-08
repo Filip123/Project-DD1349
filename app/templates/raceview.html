@@ -30,9 +30,12 @@
                 .then(response => response.json())
                 .then(coordinates => {
                     const test = document.getElementById("testDriver");
+                    raceTrackIndividualOffsetX = 100;
+                    raceTrackIndividualOffsetY = 0;
+
                     let coordinateIndex = 0;
-                    const scaleFactor = 20;
-                    const timeInterval = 500;
+                    const scaleFactor = 30;
+                    const timeInterval = 100;
 
                     raceTrack = document.getElementById("race-track")
                     const trackWidth = raceTrack.offsetWidth;
@@ -43,8 +46,9 @@
                             const x = coordinates[coordinateIndex][0] / scaleFactor;
                             const y = coordinates[coordinateIndex][1] / scaleFactor;
 
-                            test.style.left = (trackWidth / 2 + x - test.offsetWidth / 2) + 'px';
-                            test.style.top = (trackHeight / 2 + y - test.offsetHeight / 2) + 'px';
+
+                            test.style.left = (raceTrackIndividualOffsetX + (trackWidth / 2 + x - test.offsetWidth / 2)) + 'px';
+                            test.style.top = (raceTrackIndividualOffsetY + (trackHeight / 2 + y - test.offsetHeight / 2)) + 'px';
 
                             coordinateIndex++;
 
@@ -79,12 +83,9 @@
 
     <div id="buttonDiv">
         <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-        <button class="nextPreviousButtons" name="previous" onclick="fetchCoordinates('2023-03-05T16:00:00')">+</button>
+        <button class="nextPreviousButtons" name="previous" onclick="fetchCoordinates('2023-09-17T13:00:00')">+</button>
     </div>
 
-    <div id="box-area">
-        <div id="movable-element"></div>
-    </div>
 
 </main>
 {% endblock %}

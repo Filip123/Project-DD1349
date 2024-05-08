@@ -22,7 +22,7 @@
     font-size: 20px;
 }
 
-#box-area {
+#race-track {
     position: relative;
     width: 700px;
     height: 500px;
@@ -30,9 +30,10 @@
     /* Ensure the element doesn't go beyond the box */
     overflow: hidden;
     margin: auto;
+
 }
 
-#testDriver {
+.testDriver {
     background: cadetblue;
     width: 20px;
     height: 20px;

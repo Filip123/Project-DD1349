@@ -17,7 +17,7 @@ def get_coordinates():
     print(currentTime)
     print("working???")
     #coordinateList = [[186, 6294], [178, 6622], [169, 6967], [158, 7289], [143, 7685], [131, 7899], [113, 8063], [49, 8246], [1, 8299], [63, 8337]]
-    coordinateList = visualCar.getPositionsOverTimeInterval(7953, 1, currentTime, 10)
+    coordinateList = visualCar.getPositionsOverTimeInterval(9165, 4, currentTime, 10)
     return jsonify(coordinateList)   
 
 def movebackwards():
