@@ -27,14 +27,4 @@ def getPositionsOverTimeInterval(session, driverNumber,startTime: str, timeInter
 
     return positionsList
 
-def main():
-
-    position_list = getPositionsOverTimeInterval(7953, 1, "2023-03-05T16:00:00", 5)
-
-    print(len(position_list))
-    print(position_list)
-
-    print(len(getPositionsOverTimeInterval(7953, 4, "2023-03-05T16:00:00", 5)))
-    print(getPositionsOverTimeInterval(7953, 4, "2023-03-05T16:00:00", 5))
-
-main()
+   
