@@ -1,5 +1,6 @@
 p {
     font-size: x-large;
+    margin-bottom: 0px;
 }
 
 #raceList{
@@ -10,7 +11,7 @@ p {
 }
 
 .racePicture{
-    max-height: 30vh;
+    max-height: 25vh;
     max-width: 30vw;
 
 }
@@ -18,15 +19,23 @@ p {
 
 .raceClass{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border-radius: 30px;
-    border: solid 10px rgb(86, 44, 44);
-    background-color: var(--stdGray);
+    box-shadow: 2px 2px 3.84px rgba(0, 0, 0, 0.25);
+    background-color: var(--secondaryColor);
 
     text-align: center;
 
-    margin: 60px auto;
+    margin: 40px auto;
     width: 40vw;
     height: 40vh;
+
+    transition: 0.5s;
+}
+
+.raceClass:hover {
+    transform: scale(1.04);
+    transition: 0.5s;
 }

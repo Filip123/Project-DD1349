@@ -1,3 +1,40 @@
+body, html{
+    overflow: hidden;
+}
+
+main{
+    height:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+#driverStandings{
+    padding-top: 50px;
+    height:100%;
+    width:15%;
+    background-color: rgb(70, 69, 69);
+}
+
+#middleContainer{
+    width:70%;
+    height:100%;
+}
+
+#infoBar a {
+    display: flex;        /* Use flexbox */
+    align-items: center;  /* Center alignment vertically */
+    justify-content: center; /* Center alignment horizontally, if needed */
+}
+
+i{
+    transition: 0.5s;
+}
+
+i:hover {
+    color: var(--secondaryColor);
+    transform: scale(1.20);
+    transition: 0.5s;
+}
 
 #infoBar{
     display: flex;
@@ -6,13 +43,9 @@
     margin: auto;
     
     height: 5vh;
-    width: 80%;
-    border-radius: 5px;
-    background-color: var(--stdGray);
+    width: 100%;
+    background-color: var(--stdWhite);
     box-shadow: 0 2px 3.84px rgba(0, 0, 0, 0.25);
-
-
-    
 }
 
 .infoBarItem {
@@ -30,4 +63,17 @@
     height: 20px;
     position: absolute;
     
+}
+
+#raceTrack{
+    height:100%;
+}
+#buttonDiv {
+    bottom: 0;
+    text-decoration: none;
+}
+
+#filterContainer{
+    width:15%;
+    background-color: rgb(70, 69, 69);
 }
