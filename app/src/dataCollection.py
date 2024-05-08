@@ -15,7 +15,7 @@ def createDataFrame(data, keysToInclude: list[str]) -> pd.DataFrame:
 
 
 def addToTable(dataFrame: pd.DataFrame, table_name:str):
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('app/src/database/database.db')
     cur = conn.cursor()
     dataFrame.to_sql(table_name, conn, if_exists='append', index=False)
     conn.commit()
@@ -29,7 +29,7 @@ def initialize_database(schema_file, db_file):
     conn.close()
 
 # Call this function once at the initialization phase of your application
-initialize_database('schema.sql', 'database.db')
+initialize_database('schema.sql', 'app/src/database/database.db')
 
 
 #Session
@@ -65,42 +65,6 @@ dfDriver = createDataFrame(allSessionData, keysToIncludeDriver)
 print(dfDriver)
 addToTable(dfDriver, "driver")
 
-
-#Test data table:
-
-# Create a SQLite connection
-conn = sqlite3.connect('database.db')
-
-# Create a cursor object
-cursor = conn.cursor()
-
-# Execute a SELECT query to retrieve a driver
-cursor.execute("SELECT * FROM country LIMIT 1")
-country = cursor.fetchone()
-
-# Close the cursor and connection
-cursor.close()
-conn.close()
-
-# Print the retrieved driver
-print(country)
-
-# Create a SQLite connection
-conn = sqlite3.connect('database.db')
-
-# Create a cursor object
-cursor = conn.cursor()
-
-# Execute a SELECT query to retrieve a driver
-cursor.execute("SELECT * FROM driver LIMIT 1")
-driver = cursor.fetchone()
-
-# Close the cursor and connection
-cursor.close()
-conn.close()
-
-# Print the retrieved driver
-print(driver)
 
 #Driver Position
 
