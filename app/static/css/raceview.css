@@ -93,7 +93,14 @@ i:hover {
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;    
-    transition: opacity .2s;}  
+    transition: opacity .2s;
+    transition: 0.3s
+}  
+
+#timeSliderInput:hover{
+    background-color: #a0a0a0;
+    transition: 0.3s
+}
     
 #timeSliderInput::-webkit-slider-thumb {   
     -webkit-appearance: none;    
