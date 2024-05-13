@@ -13,6 +13,7 @@ main{
     height:100%;
     width:15%;
     background-color: rgb(70, 69, 69);
+    color:white;
 }
 
 #middleContainer{
@@ -118,7 +119,8 @@ i:hover {
     background: var(--secondaryColor);    
     cursor: pointer;  
 }
-#filterContainer{    
+#filterContainer{  
+    color: white;;  
     width:15%;    
     background-color: rgb(70, 69, 69);
 }
