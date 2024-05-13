@@ -22,15 +22,29 @@
             <div class="infoBarItem">Lap 5/57</div>
             <div class="infoBarItem">Time: 15:30:07</div>   
         </div>
+        <div id="buttonDiv">
+            <button class ="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
+            <button class ="nextPreviousButtons" name="previous" onclick="fetchCoordinates('2023-09-17T13:00:00')">Start</button>
+        </div>
         <div id="raceTrack">
-            <div id="buttonDiv">
-                <button class ="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-                <button class ="nextPreviousButtons" name="previous" onclick="fetchCoordinates()">+</button>
-            </div>
-            <div id="testDriver"></div>
+            <div id="testDriver"></div>         
+        </div>
+        <div itemid="timeControlSlideContainer">
+            <input type="range" min="0" max="7200" value="0" id="timeSliderInput">
         </div>
     </div>
-    <div id="filterContainer"></div>
+    <div id="filterContainer">
+        <form>
+            -> Filter <br>
+            <!--Ladda in befintliga förare i specifika racet här -->
+            <input type="checkbox" id="driver1" name="driver1" checked > 
+            <label for="vehicle1"> Verstappen </label><br>
+            <input type="checkbox" id="driver2" name="driver2" checked >
+            <label for="vehicle2"> Sainz</label><br>
+            <input type="checkbox" id="driver3" name="driver3" checked >
+            <label for="vehicle3"> Bottas </label><br>
+        </form>
+    </div>
 
     <script>
         let currentInterval; // Declare outside to clear it properly

@@ -38,4 +38,5 @@ p {
 .raceClass:hover {
     transform: scale(1.04);
     transition: 0.5s;
+    cursor: url(https://cdn.custom-cursor.com/db/8019/32/sport-formula-1-pointer.png), pointer !important;
 }
