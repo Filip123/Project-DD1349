@@ -65,11 +65,11 @@ i:hover {
 
 }
 
-.testDriver {
+#testDriver {
     background: cadetblue;
     width: 20px;
     height: 20px;
-    position: absolute;
+    position: relative;
 }
 
 #buttonDiv {
