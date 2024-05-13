@@ -77,12 +77,15 @@ i:hover {
     text-decoration: none;
 }
 
+
 #timeControlSlideContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 20px;  /* Adjust height as needed */
     width: 100%;    /* Ensure container width is full or set as needed */
+    text-align: center;
 }
 
 #timeSliderInput {
