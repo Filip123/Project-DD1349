@@ -37,7 +37,7 @@
                     const scaleFactor = 30;
                     const timeInterval = 100;
 
-                    raceTrack = document.getElementById("race-track")
+                    raceTrack = document.getElementById("race-track");
                     const trackWidth = raceTrack.offsetWidth;
                     const trackHeight = raceTrack.offsetHeight;
 
@@ -48,7 +48,8 @@
 
 
                             test.style.left = (raceTrackIndividualOffsetX + (trackWidth / 2 + x - test.offsetWidth / 2)) + 'px';
-                            test.style.top = (raceTrackIndividualOffsetY + (trackHeight / 2 + y - test.offsetHeight / 2)) + 'px';
+                            test.style.bottom = (raceTrackIndividualOffsetY + (trackHeight / 2 + y - test.offsetHeight / 2)) + 'px';
+
 
                             coordinateIndex++;
 
@@ -79,7 +80,6 @@
     <div id="race-track">
         <div id="testDriver"></div>
     </div>
-
 
     <div id="buttonDiv">
         <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
