@@ -11,12 +11,11 @@
 
     <div id="raceList">
         {% for session_key, country_name, year in session_country_list %}
-        <div class="raceClass" id="{{ session_key }}">
-            <a href="{{ url_for('race_view') }}"><img class="racePicture"
+            <a class="raceClass" id="{{ session_key }}" href="{{ url_for('race_view') }}"><img class="racePicture"
                     src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}"
                     alt="Picutre of Singapore Circuit">
                 <p>{{ country_name }} {{ year }}</p>
-        </div>
+            </a>
         {% endfor %}
     </div>
 

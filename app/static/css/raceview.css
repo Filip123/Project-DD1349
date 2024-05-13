@@ -1,17 +1,52 @@
-#infoBar {
+body, html{
+    overflow: hidden;
+}
+
+main{
+    height:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+#driverStandings{
+    padding-top: 50px;
+    height:100%;
+    width:15%;
+    background-color: rgb(70, 69, 69);
+    color:white;
+}
+
+#middleContainer{
+    width:70%;
+    height:100%;
+}
+
+#infoBar a {
+    display: flex;       
+    align-items: center; 
+    justify-content: center;
+}
+
+i{
+    transition: 0.5s;
+}
+
+i:hover {
+    color: var(--secondaryColor);
+    transform: scale(1.20);
+    transition: 0.5s;
+}
+
+#infoBar{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: auto;
 
     height: 5vh;
-    width: 80%;
-    border-radius: 5px;
-    background-color: var(--stdGray);
+    width: 100%;
+    background-color: var(--stdWhite);
     box-shadow: 0 2px 3.84px rgba(0, 0, 0, 0.25);
-
-
-
 }
 
 .infoBarItem {
@@ -22,12 +57,9 @@
     font-size: 20px;
 }
 
-#race-track {
-    position: relative;
-    width: 700px;
-    height: 500px;
-    border: 2px solid black;
-    /* Ensure the element doesn't go beyond the box */
+#raceTrack {
+    width: 100%;
+    height: 70%;
     overflow: hidden;
     margin: auto;
 
@@ -37,6 +69,59 @@
     background: cadetblue;
     width: 20px;
     height: 20px;
-    position: absolute;
-
+    position: relative;
 }
+
+#buttonDiv {
+    bottom: 0;
+    text-decoration: none;
+}
+
+#timeControlSlideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;  /* Adjust height as needed */
+    width: 100%;    /* Ensure container width is full or set as needed */
+}
+
+#timeSliderInput {
+    appearance: none;
+    width: 80%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;    
+    transition: opacity .2s;
+    transition: 0.3s
+}  
+
+#timeSliderInput:hover{
+    background-color: #a0a0a0;
+    transition: 0.3s
+}
+    
+#timeSliderInput::-webkit-slider-thumb {   
+    -webkit-appearance: none;    
+    appearance: none;    
+    width: 25px;    
+    height: 25px;    
+    border-radius: 50%;     
+    background: var(--secondaryColor);    
+    cursor: pointer;  
+}    
+#timeSliderInput::-moz-range-thumb {    
+    width: 25px;    
+    height: 25px;   
+    border-radius: 50%;    
+    background: var(--secondaryColor);    
+    cursor: pointer;  
+}
+#filterContainer{  
+    color: white;;  
+    width:15%;    
+    background-color: rgb(70, 69, 69);
+}
+

@@ -4,34 +4,79 @@
 }
 
 :root {
-    --f1Red: #e10600;
-    --stdGray: #bbbbbb;
+    --f1Red: #ee0000;
+    --stdWhite: white;
     --secondaryColor: darkred;
 }
 
 html, body{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     overflow-x: hidden;
-    background-color: var(--f1Red);
+    background-color: var(--stdWhite);
     font-family: "F1";
+    cursor: url(https://cdn.custom-cursor.com/db/8020/32/sport-formula-1-cursor.png), default !important;
 
 }
 
 header{
-    height: 10%;
+    position: relative; 
+    top: 0;  
+    position: sticky;
+    height: 13%;
     width: 100%;
     text-align: center;
     background-color: var(--secondaryColor);
     box-shadow: 0 2px 3.84px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+
 }
 
-#f1Logo{
-    height:80%;
-    margin: 10px auto;
+#f1Logo, #f1Logo2 {
+    position: absolute;
+
+    left: 50%; /* Center horizontally */
+    
+    height: 60%; /* Match height */
+}
+
+#f1Logo {
+    z-index: 1; /* Lower z-index means it will be underneath */
+    transform: translate(-49.95%, -50%); /* Adjust to perfectly center */
+    top: 55%;  /* Center vertically */
+    filter: grayscale(100%); /* If you want to keep the grayscale effect */
+}
+
+#f1Logo2 {
+    z-index: 2; /* Higher z-index means it will cover the other logo */
+    transform: translate(-50%, -50%); /* Adjust to perfectly center */
+    top: 50%;  /* Center vertically */
 }
 
 a{
-    text-decoration: none 
+    text-decoration: none ;
+    color: black;
 }
+
+
+
+::-webkit-scrollbar {
+	width: 0.8rem; /* Note to self, keep this at 0.5*/
+	background-color: var(--secondaryColor);
+	opacity: 0.1;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: -1px 0 1px 0 var(--secondaryColor);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--stdWhite);
+	border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(185, 185, 185);
+}
+
