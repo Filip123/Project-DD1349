@@ -6,7 +6,7 @@ How to install and use the project:
 Access product through a website on a browser.
 
 Languages:
-Python, HTML, CSS
+Python, HTML, CSS & JavaScript
 
 Libraries, frameworks:
 Python flask - website

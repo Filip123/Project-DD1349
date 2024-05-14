@@ -20,19 +20,23 @@
             </a></button>
             <div class="infoBarItem">Singapore</div>
             <div class="infoBarItem">Lap 5/57</div>
-            <div class="infoBarItem">Time: 15:30:07</div>
         </div>
         <div id="buttonDiv">
             <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
             <button class="nextPreviousButtons" name="previous"
-                onclick="fetchCoordinates('2023-09-17T13:00:00')">Start</button>
+                onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
             <button class="nextPreviousButtons" name="testSessionData" onclick="getCurrentSessionID()">test</button>
         </div>
         <div id="raceTrack">
             <div id="testDriver"></div>
         </div>
-        <div itemid="timeControlSlideContainer">
-            <input type="range" min="0" max="7200" value="0" id="timeSliderInput">
+        <div id="timeControlSlideContainer">
+
+            <input type="range" min="0" max="720" value="0" id="timeSliderInput"
+                onchange="fetchCoordinates('2023-09-17T13:00:00', this.value)">
+            <label for="timeSliderInput">Time Control</label>
+            <p id="time"></p>
+
         </div>
     </div>
     <div id="filterContainer">
@@ -47,6 +51,5 @@
             <label for="vehicle3"> Bottas </label><br>
         </form>
     </div>
-
 </main>
 {% endblock %}
