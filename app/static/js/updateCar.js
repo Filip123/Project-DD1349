@@ -1,50 +1,60 @@
 let currentInterval; // Declare outside to clear it properly
+let isFetching = false; // To track if a fetch request is ongoing
+let debounceTimeout; // To handle debouncing
 
-function fetchCoordinates(currentTime) {
-    console.log("Current time: " + currentTime);
-    const url = '/get-coordinates?currentTime=' + currentTime;
-    let currentDateTime = new Date(currentTime); // Declare as local
+function fetchCoordinates(baseTime, slideValue) {
+    if (isFetching) {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => fetchCoordinates(baseTime, slideValue), 200);
+        return;
+    }
+
+    isFetching = true;
+    let startTime = new Date(baseTime);
+    startTime.setSeconds(startTime.getSeconds() + parseInt(slideValue) * 10); // Adjusting time based on slider value
+    let formattedTime = formatDate(startTime);
+
+    console.log("Current time: " + formattedTime);
+    const url = '/get-coordinates?currentTime=' + formattedTime;
+
+    document.getElementById('time').innerHTML = startTime;
+
     clearInterval(currentInterval); // Clear existing interval
     fetch(url)
         .then(response => response.json())
         .then(coordinates => {
-            const test = document.getElementById("testDriver");
-            raceTrackIndividualOffsetX = 100;
-            raceTrackIndividualOffsetY = 0;
-
+            const testDriver = document.getElementById("testDriver");
+            const raceTrack = document.getElementById("raceTrack");
             let coordinateIndex = 0;
             const scaleFactor = 30;
             const timeInterval = 100;
-
-            raceTrack = document.getElementById("raceTrack")
-
-            const trackWidth = raceTrack.offsetWidth;
-            const trackHeight = raceTrack.offsetHeight;
 
             currentInterval = setInterval(() => {
                 if (coordinateIndex < coordinates.length) {
                     const x = coordinates[coordinateIndex][0] / scaleFactor;
                     const y = coordinates[coordinateIndex][1] / scaleFactor;
-
-                    test.style.left = (raceTrackIndividualOffsetX + (trackWidth / 2 + x - test.offsetWidth / 2))+250 + 'px';
-                    test.style.bottom = (raceTrackIndividualOffsetY + (trackHeight / 2 + y - test.offsetHeight / 2)) + 100 + 'px';
-
-
+                    testDriver.style.left = `${100 + (raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 250}px`;
+                    testDriver.style.bottom = `${(raceTrack.offsetHeight / 2 + y - testDriver.offsetHeight / 2) + 100}px`;
                     coordinateIndex++;
-
                 } else {
-                    clearInterval(currentInterval); // Stop the interval when coordinates are exhausted
-                    currentDateTime.setSeconds(currentDateTime.getSeconds() + 10);
-                    fetchCoordinates(formatDate(currentDateTime)); // Call recursively with new time
+                    clearInterval(currentInterval);
+                    let slider = document.getElementById("timeSliderInput");
+                    let newValue = parseInt(slider.value) + 1;
+                    if (newValue <= slider.max) {
+                        slider.value = newValue; // Update slider value
+                        fetchCoordinates(baseTime, newValue); // Fetch next set of coordinates automatically if needed
+                    }
                 }
             }, timeInterval);
+            isFetching = false;
         })
         .catch(error => {
             console.error('Error fetching coordinates:', error);
-            clearInterval(currentInterval); // Clear on error
+            clearInterval(currentInterval);
+            isFetching = false;
         });
+}
 
-        }
 function formatDate(date) {
     // Utility function to format date to string
     return date.getFullYear() + '-' +
