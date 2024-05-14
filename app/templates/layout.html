@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>F1 Map Tracker</title>
     <link rel="icon" type="image/x-icon" href="/static/images/f1Logo.png">
     <script src="https://kit.fontawesome.com/58baa24089.js" crossorigin="anonymous"></script>
     <script src="/static/js/updateCar.js"></script>
-    
-    {% block css %} 
+    <script src="/static/js/raceViewManager.js"></script>
+
+    {% block css %}
     {% endblock %}
 </head>
+
 <body>
     <header id="mainHeader">
         <img id="f1Logo" src="{{ url_for('static', filename= 'images/f1Logo.png')}}">
@@ -22,4 +25,5 @@
     <footer>
     </footer>
 </body>
+
 </html>

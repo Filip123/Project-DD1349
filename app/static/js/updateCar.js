@@ -26,7 +26,7 @@ function fetchCoordinates(currentTime) {
                     const x = coordinates[coordinateIndex][0] / scaleFactor;
                     const y = coordinates[coordinateIndex][1] / scaleFactor;
 
-                    test.style.left = (raceTrackIndividualOffsetX + (trackWidth / 2 + x - test.offsetWidth / 2))+250 + 'px';
+                    test.style.left = (raceTrackIndividualOffsetX + (trackWidth / 2 + x - test.offsetWidth / 2)) + 250 + 'px';
                     test.style.bottom = (raceTrackIndividualOffsetY + (trackHeight / 2 + y - test.offsetHeight / 2)) + 100 + 'px';
 
 
@@ -44,7 +44,7 @@ function fetchCoordinates(currentTime) {
             clearInterval(currentInterval); // Clear on error
         });
 
-        }
+}
 function formatDate(date) {
     // Utility function to format date to string
     return date.getFullYear() + '-' +
