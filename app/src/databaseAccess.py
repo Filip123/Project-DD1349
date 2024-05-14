@@ -36,5 +36,3 @@ def fetch_session_data():
     return rowsDataList
 
 fetch_session_data()
-
-fetch_needed_display_data()
