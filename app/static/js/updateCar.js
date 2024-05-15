@@ -26,14 +26,14 @@ function fetchCoordinates(baseTime, slideValue) {
             const testDriver = document.getElementById("testDriver");
             const raceTrack = document.getElementById("raceTrack");
             let coordinateIndex = 0;
-            const scaleFactor = 30;
+            const scaleFactor = 24;
             const timeInterval = 100;
 
             currentInterval = setInterval(() => {
                 if (coordinateIndex < coordinates.length) {
                     const x = coordinates[coordinateIndex][0] / scaleFactor;
                     const y = coordinates[coordinateIndex][1] / scaleFactor;
-                    testDriver.style.left = `${100 + (raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 250}px`;
+                    testDriver.style.left = `${(raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 400}px`;
                     testDriver.style.bottom = `${(raceTrack.offsetHeight / 2 + y - testDriver.offsetHeight / 2) + 100}px`;
                     coordinateIndex++;
                 } else {

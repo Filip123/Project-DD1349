@@ -65,11 +65,21 @@ i:hover {
 
 }
 
+.coordinateDiv {
+    background-color: #a0a0a0;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border-radius: 50%;
+}
+
 #testDriver {
     background: cadetblue;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     position: absolute;
+    z-index: 2;
+    border-radius: 50%;
 }
 
 #buttonDiv {
