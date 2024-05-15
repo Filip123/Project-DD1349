@@ -25,10 +25,9 @@
             <div class="infoBarItem">Singapore</div>
             <div class="infoBarItem">Lap 5/57</div>  
         </div>
-        <div id="buttonDiv">
-            <button class ="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-            <button class ="nextPreviousButtons" name="previous" onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
-        </div>
+        
+        <button id="startButton" name="start" onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
+
         <div id="raceTrack">
             <div id="testDriver"></div>         
         </div>
