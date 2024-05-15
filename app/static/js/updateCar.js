@@ -17,7 +17,7 @@ function fetchCoordinates(baseTime, slideValue) {
     console.log("Current time: " + formattedTime);
     const url = '/get-coordinates?currentTime=' + formattedTime;
 
-    document.getElementById('time').innerHTML = startTime;
+    document.getElementById('time').innerHTML = formatDate(startTime);
 
     clearInterval(currentInterval); // Clear existing interval
     fetch(url)
