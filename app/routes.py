@@ -18,6 +18,13 @@ def get_coordinates():
     coordinateList = visualCar.getPositionsOverTimeInterval(9165, 4, currentTime, 10)
     return jsonify(coordinateList)   
 
+@app.route("/get-country")
+def get_country():
+    sessionKey = request.args.get('sessionKey', 0)
+    countryName = databaseAccess.fetch_country_name(sessionKey)
+    return countryName
+
+
 def movebackwards():
     pass
   
