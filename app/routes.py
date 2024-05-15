@@ -14,8 +14,10 @@ def index():
 def get_coordinates():
     
     currentTime = request.args.get('currentTime', 0)
+    currentSession = request.args.get('currentSession', 9165)
     print(currentTime)
-    coordinateList = visualCar.getPositionsOverTimeInterval(9165, 4, currentTime, 10)
+    print(currentSession)
+    coordinateList = visualCar.getPositionsOverTimeInterval(int(currentSession), 4, currentTime, 10)
     return jsonify(coordinateList)   
 
 @app.route("/get-country")

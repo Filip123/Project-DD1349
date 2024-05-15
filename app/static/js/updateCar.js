@@ -15,7 +15,7 @@ function fetchCoordinates(baseTime, slideValue) {
     let formattedTime = formatDate(startTime);
 
     console.log("Current time: " + formattedTime);
-    const url = '/get-coordinates?currentTime=' + formattedTime;
+    const url = '/get-coordinates?currentTime=' + formattedTime + '&currentSession=' + getCurrentSessionID();
 
     document.getElementById('time').innerHTML = startTime;
 
