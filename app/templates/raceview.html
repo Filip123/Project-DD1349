@@ -24,20 +24,20 @@
         </div>
         <div id="buttonDiv">
             <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-            <button class="nextPreviousButtons" name="previous"
+            <button class="nextPreviousButtons" name="start"
                 onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
+            <!--Should be this.getAttribute('data-formatted-time')-->
             <button class="nextPreviousButtons" name="testSessionData" onclick="getCurrentCountryName()">test</button>
         </div>
         <div id="raceTrack">
             <div id="testDriver"></div>
         </div>
-        <div id="timeControlSlideContainer">
 
-            <input type="range" min="0" max="720" value="0" id="timeSliderInput"
-                onchange="fetchCoordinates('2023-09-17T13:00:00', this.value)">
+        <div id="timeControlSlideContainer">
+            <input type="range" min="0" max="720" value="0" id="timeSliderInput" onchange="handleTimeSliderChange()">
+            <!--Should be onchange="handleTimeSliderChange()"-->
             <label for="timeSliderInput">Time Control</label>
             <p id="time"></p>
-
         </div>
     </div>
     <div id="filterContainer">

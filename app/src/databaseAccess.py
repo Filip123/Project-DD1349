@@ -67,12 +67,14 @@ def fetch_country_name(session_key):
         # Close the database connection
         conn.close()
 
-        
-    # session_row = cursor.fetchall()
-    # country_key = session_row[1]
-    # print(country_key)
-    # # Close the cursor and connection
-    # cursor.close()
-    # conn.close()
-    # return country_key
+def fetch_start_time(session_key):
+    return '2023-09-17T13:00:00'
+    database_file =  "app/src/database/database.db"
 
+    conn = sqlite3.connect(database_file)
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT date_start FROM session WHERE session_key=?', (session_key))
+    result = cursor.fetchone()
+    return '2023-09-17T13:00:00'
+    return result

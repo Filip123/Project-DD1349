@@ -17,7 +17,8 @@ def get_coordinates():
     currentSession = request.args.get('currentSession', 9165)
     print(currentTime)
     print(currentSession)
-    coordinateList = visualCar.getPositionsOverTimeInterval(int(currentSession), 4, currentTime, 10)
+    #Here issue
+    coordinateList = visualCar.getPositionsOverTimeInterval(int(currentSession), 1, currentTime, 10)
     return jsonify(coordinateList)   
 
 @app.route("/get-country")
@@ -25,6 +26,12 @@ def get_country():
     sessionKey = request.args.get('sessionKey', 0)
     countryName = databaseAccess.fetch_country_name(sessionKey)
     return countryName
+
+@app.route("/get-startTime")
+def get_startTime():
+    sessionKey = request.args.get('sessionKey', 0)
+    startTime = databaseAccess.fetch_start_time(sessionKey)
+    return '2023-09-17T13:00:00' #Should be starttime
 
 
 def movebackwards():
