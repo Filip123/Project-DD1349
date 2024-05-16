@@ -3,6 +3,9 @@ let isFetching = false; // To track if a fetch request is ongoing
 let debounceTimeout; // To handle debouncing
 
 function fetchCoordinates(baseTime, slideValue) {
+    console.log(typeof baseTime);
+    console.log(typeof '2023-09-17T13:00:00');
+    console.log("baseTime: " + baseTime);
     if (isFetching) {
         clearTimeout(debounceTimeout);
         debounceTimeout = setTimeout(() => fetchCoordinates(baseTime, slideValue), 200);
@@ -10,12 +13,14 @@ function fetchCoordinates(baseTime, slideValue) {
     }
 
     isFetching = true;
-    let startTime = new Date(baseTime);
+    let startTime = new Date(baseTime.trim());
+    console.log("start time 1: " + startTime);
     startTime.setSeconds(startTime.getSeconds() + parseInt(slideValue) * 10); // Adjusting time based on slider value
+    console.log("start time 2: " + startTime);
     let formattedTime = formatDate(startTime);
 
     console.log("Current time: " + formattedTime);
-    const url = '/get-coordinates?currentTime=' + formattedTime;
+    const url = '/get-coordinates?currentTime=' + formattedTime + '&currentSession=' + getCurrentSessionID();
 
     document.getElementById('time').innerHTML = formatDate(startTime);
 
@@ -36,14 +41,6 @@ function fetchCoordinates(baseTime, slideValue) {
                     const y = coordinates[coordinateIndex][1] / scaleFactor;
                     testDriver.style.left = `${(raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 400}px`;
                     testDriver.style.bottom = `${(raceTrack.offsetHeight / 2 + y - testDriver.offsetHeight / 2) + 100}px`;
-
-                    if (coordinateIndex % 4 === 0) {
-                        additionalSeconds+=2;
-                        let currentTime = new Date(startTime.getTime());
-                        currentTime.setSeconds(currentTime.getSeconds() + additionalSeconds);
-                        document.getElementById('time').innerHTML = formatDate(currentTime);
-                    }
-
                     coordinateIndex++;
                 } else {
                     clearInterval(currentInterval);
