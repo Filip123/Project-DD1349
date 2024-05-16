@@ -1,6 +1,6 @@
 function fetchCoordinatesForRaceTrack(startTime) {
     console.log("For race track Current time: " + startTime);
-    const url = '/get-racetrack-coordinates?raceStart=' + startTime;
+    const url = '/get-racetrack-coordinates?raceStart=' + startTime + '&currentSession=' + getCurrentSessionID();
 
     fetch(url)
         .then(response => response.json())
