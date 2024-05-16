@@ -36,6 +36,13 @@ def get_startTime():
 
 def movebackwards():
     pass
+
+@app.route("/get-racetrack-coordinates")
+def get_racetrack_coordinates():
+    raceStartTime = request.args.get('raceStart', 0)
+    print("yooooo")
+    coordinateList = visualCar.getPositionsOverTimeInterval(9165, 4, raceStartTime, 500)
+    return jsonify(coordinateList)
   
 @app.route('/race-view')
 def race_view():

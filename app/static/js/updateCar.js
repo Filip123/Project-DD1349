@@ -17,7 +17,7 @@ function fetchCoordinates(baseTime, slideValue) {
     console.log("Current time: " + formattedTime);
     const url = '/get-coordinates?currentTime=' + formattedTime + '&currentSession=' + getCurrentSessionID();
 
-    document.getElementById('time').innerHTML = startTime;
+    document.getElementById('time').innerHTML = formatDate(startTime);
 
     clearInterval(currentInterval); // Clear existing interval
     fetch(url)
@@ -26,17 +26,16 @@ function fetchCoordinates(baseTime, slideValue) {
             const testDriver = document.getElementById("testDriver");
             const raceTrack = document.getElementById("raceTrack");
             let coordinateIndex = 0;
-            const scaleFactor = 30;
+            const scaleFactor = 24;
             const timeInterval = 100;
+            let additionalSeconds = 0;
 
             currentInterval = setInterval(() => {
                 if (coordinateIndex < coordinates.length) {
                     const x = coordinates[coordinateIndex][0] / scaleFactor;
                     const y = coordinates[coordinateIndex][1] / scaleFactor;
-
-                    testDriver.style.left = `${100 + (raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 250}px`;
+                    testDriver.style.left = `${(raceTrack.offsetWidth / 2 + x - testDriver.offsetWidth / 2) + 400}px`;
                     testDriver.style.bottom = `${(raceTrack.offsetHeight / 2 + y - testDriver.offsetHeight / 2) + 100}px`;
-
                     coordinateIndex++;
                 } else {
                     clearInterval(currentInterval);

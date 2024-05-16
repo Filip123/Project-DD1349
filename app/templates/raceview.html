@@ -3,6 +3,10 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raceview.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+<script src="/static/js/updateCar.js"></script>
+<script src="/static/js/createRacetrack.js"></script>
+<script src="static/js/raceviewOnLoad.js"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -23,11 +27,9 @@
             <div class="infoBarItem">Lap 5/57</div>
         </div>
         <div id="buttonDiv">
-            <button class="nextPreviousButtons" name="next" onclick="movebackwards()">-</button>
-            <button class="nextPreviousButtons" name="start"
+            <button class="nextPreviousButtons" name="previous"
                 onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
             <!--Should be this.getAttribute('data-formatted-time')-->
-            <button class="nextPreviousButtons" name="testSessionData" onclick="getCurrentCountryName()">test</button>
         </div>
         <div id="raceTrack">
             <div id="testDriver"></div>
