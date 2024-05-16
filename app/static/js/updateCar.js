@@ -3,6 +3,9 @@ let isFetching = false; // To track if a fetch request is ongoing
 let debounceTimeout; // To handle debouncing
 
 function fetchCoordinates(baseTime, slideValue) {
+    console.log(typeof baseTime);
+    console.log(typeof '2023-09-17T13:00:00');
+    console.log("baseTime: " + baseTime);
     if (isFetching) {
         clearTimeout(debounceTimeout);
         debounceTimeout = setTimeout(() => fetchCoordinates(baseTime, slideValue), 200);
@@ -10,8 +13,10 @@ function fetchCoordinates(baseTime, slideValue) {
     }
 
     isFetching = true;
-    let startTime = new Date(baseTime);
+    let startTime = new Date(baseTime.trim());
+    console.log("start time 1: " + startTime);
     startTime.setSeconds(startTime.getSeconds() + parseInt(slideValue) * 10); // Adjusting time based on slider value
+    console.log("start time 2: " + startTime);
     let formattedTime = formatDate(startTime);
 
     console.log("Current time: " + formattedTime);

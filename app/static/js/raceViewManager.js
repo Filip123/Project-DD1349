@@ -32,14 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.querySelector('button[name="start"]');
     if (startButton) {
         // Set the data-formatted-time attribute for the button
-        startButton.setAttribute('data-formatted-time', getCurrentStartTime());
-
-        // Add event listener to handle click event for the button
-        startButton.addEventListener('click', function () {
-            fetchCoordinates(startButton.getAttribute('data-formatted-time'), startButton.getAttribute('data-current-location'), 0);
-        });
+        getCurrentStartTime()
+            .then(baseTime => {
+                startButton.setAttribute('data-formatted-time', baseTime);
+                // Add event listener to handle click event for the button
+                startButton.addEventListener('click', function () {
+                    fetchCoordinates(baseTime, 0);
+                });
+            })
+            .catch(error => {
+                console.error('Error getting start time:', error);
+            });
     }
 });
+
 
 // Function to handle the onchange event of the range input
 function handleTimeSliderChange() {
@@ -49,16 +55,9 @@ function handleTimeSliderChange() {
     fetchCoordinates('2023-09-17T13:00:00', sliderValue);
 }
 
-// function getCurrentStartTime() {
-
-//     return '2023-09-17T13:00:00';
-// }
-
 function getCurrentStartTime() {
-    return '2023-09-17T13:00:00'
     const url = '/get-startTime?sessionKey=' + getCurrentSessionID();
-
-    fetch(url)
+    return fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -66,10 +65,12 @@ function getCurrentStartTime() {
             return response.text();
         })
         .then(startTime => {
-            return startTime
+            console.log(startTime);
+            console.log(typeof startTime);
+            return startTime;
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
+            throw error; // Rethrow the error to propagate it further
         });
 }
-

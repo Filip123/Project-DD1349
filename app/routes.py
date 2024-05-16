@@ -30,8 +30,11 @@ def get_country():
 @app.route("/get-startTime")
 def get_startTime():
     sessionKey = request.args.get('sessionKey', 0)
-    startTime = databaseAccess.fetch_start_time(sessionKey)
-    return '2023-09-17T13:00:00' #Should be starttime
+    print("session key: " + sessionKey)
+    
+    startTime = databaseAccess.fetch_start_time(sessionKey)[0]
+    print("startTime: " + startTime)
+    return startTime 
 
 
 def movebackwards():

@@ -27,8 +27,8 @@
             <div class="infoBarItem">Lap 5/57</div>
         </div>
         <div id="buttonDiv">
-            <button class="nextPreviousButtons" name="previous"
-                onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
+            <button class="nextPreviousButtons" name="start"
+                onclick="fetchCoordinates(this.getAttribute('data-formatted-time'), 0)">Start</button>
             <!--Should be this.getAttribute('data-formatted-time')-->
         </div>
         <div id="raceTrack">
@@ -36,10 +36,11 @@
         </div>
 
         <div id="timeControlSlideContainer">
-            <input type="range" min="0" max="720" value="0" id="timeSliderInput" onchange="handleTimeSliderChange()">
+            <input type="range" min="0" max="720" value="0" id="timeSliderInput">
             <!--Should be onchange="handleTimeSliderChange()"-->
             <label for="timeSliderInput">Time Control</label>
             <p id="time"></p>
+
         </div>
     </div>
     <div id="filterContainer">

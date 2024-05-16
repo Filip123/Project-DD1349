@@ -68,13 +68,17 @@ def fetch_country_name(session_key):
         conn.close()
 
 def fetch_start_time(session_key):
-    return '2023-09-17T13:00:00'
+    print(session_key)
     database_file =  "app/src/database/database.db"
 
     conn = sqlite3.connect(database_file)
     cursor = conn.cursor()
 
-    cursor.execute('SELECT date_start FROM session WHERE session_key=?', (session_key))
+    cursor.execute('SELECT date_start FROM session WHERE session_key=?', (session_key,))
     result = cursor.fetchone()
-    return '2023-09-17T13:00:00'
+    print("Result in satabase access" , result)
+    # Close the cursor and connection
+    cursor.close()
+    conn.close()
     return result
+    
