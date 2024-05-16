@@ -4,8 +4,8 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raceview.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
 <script src="/static/js/updateCar.js"></script>
-<script src="/static/js/createRacetrack.js"></script>
-<script src="static/js/raceviewOnLoad.js"></script>
+<script src ="/static/js/createRacetrack.js"></script>
+<script src ="static/js/raceviewOnLoad.js"></script>
 
 {% endblock %}
 
@@ -21,29 +21,28 @@
             <a href="{{ url_for('index') }}">
                 <i class="fa-solid fa-arrow-left fa-xl"></i>
             </a></button>
-
-            <div class="infoBarItem" id="countryName"></div>
-            <script>getCurrentCountryName()</script>
+            <div class="infoBarItem">Singapore</div>
             <div class="infoBarItem">Lap ?/?</div>  
-
         </div>
+        
+        <button id="startButton" name="start" onclick="fetchCoordinates('2023-09-17T13:00:00', 0)">Start</button>
+
         <div id="raceTrack">
-            <div id="testDriver"></div>
+            <div id="testDriver"></div>         
         </div>
-
         <div id="timeControlSlideContainer">
-            <input type="range" min="0" max="720" value="0" id="timeSliderInput">
-            <!--Should be onchange="handleTimeSliderChange()"-->
+            
+            <input type="range" min="0" max="720" value="0" id="timeSliderInput" onchange="fetchCoordinates('2023-09-17T13:00:00', this.value)">
             <label for="timeSliderInput">Time Control</label>
             <p id="time"></p>
-
+            
         </div>
     </div>
     <div id="filterContainer">
         <form>
             -> Filter <br>
             <!--Ladda in befintliga förare i specifika racet här -->
-            <input type="checkbox" id="driver1" name="driver1" checked>
+            <input type="checkbox" id="driver1" name="driver1" checked > 
             <label for="vehicle1"> Verstappen </label><br>
         </form>
     </div>

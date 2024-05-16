@@ -11,19 +11,13 @@
 
     <div id="raceList">
         {% for session_key, country_name, year in session_country_list %}
-        <a class="raceClass" id="{{ session_key }}" href="{{ url_for('race_view') }}"
-            onclick="setCurrentSessionID('{{ session_key }}')"><img class="racePicture"
-                src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}"
-                alt="Picutre of Singapore Circuit">
-            <p>{{ country_name }} {{ year }}</p>
-        </a>
+            <a class="raceClass" id="{{ session_key }}" href="{{ url_for('race_view') }}"><img class="racePicture"
+                    src="{{ url_for('static', filename='images/Singapore_Circuit.avif') }}"
+                    alt="Picutre of Singapore Circuit">
+                <p>{{ country_name }} {{ year }}</p>
+            </a>
         {% endfor %}
     </div>
 
 </main>
-
-
-
-
-
 {% endblock %}

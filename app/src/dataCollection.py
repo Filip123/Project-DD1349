@@ -2,7 +2,6 @@ from urllib.request import urlopen
 import json
 import pandas as pd
 import sqlite3
-import datetime
 
 def getDataApiRequest(apiRequest: str) -> any:
     response = urlopen(apiRequest)
@@ -30,7 +29,7 @@ def initialize_database(schema_file, db_file):
     conn.close()
 
 # Call this function once at the initialization phase of your application
-initialize_database('app/src/database/schema.sql', 'app/src/database/database.db')
+initialize_database('schema.sql', 'app/src/database/database.db')
 
 
 #Session
@@ -50,13 +49,6 @@ keysToIncludeCountry = ['country_key', 'country_name']
 filteredDataCountry = {key: [entry[key] for entry in dataSession] for key in keysToIncludeCountry}
 
 dfCountry = createDataFrame(filteredDataCountry, keysToIncludeCountry)
-# Convert datetime strings to datetime objects
-dfSession['date_start'] = pd.to_datetime(dfSession['date_start'])
-dfSession['date_end'] = pd.to_datetime(dfSession['date_end'])
-
-# Remove timezone information
-dfSession['date_start'] = dfSession['date_start'].dt.strftime('%Y-%m-%dT%H:%M:%S')
-dfSession['date_end'] = dfSession['date_end'].dt.strftime('%Y-%m-%dT%H:%M:%S')
 addToTable(dfCountry, "country")
 print("--------Country Data---------")
 print(dfCountry)

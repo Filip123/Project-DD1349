@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 import math
 
 def getEndTime(startTime: str, timeInterval: int) -> str:
-    print(startTime)
     end_time = datetime.strptime(startTime, '%Y-%m-%dT%H:%M:%S') + timedelta(seconds=timeInterval)
     return end_time.strftime('%Y-%m-%dT%H:%M:%S')
 

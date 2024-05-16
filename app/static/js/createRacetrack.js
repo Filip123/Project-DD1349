@@ -1,5 +1,5 @@
 function fetchCoordinatesForRaceTrack(startTime) {
-    console.log("For race track Current time: " + startTime);
+    console.log("Current time: " + startTime);
     const url = '/get-racetrack-coordinates?raceStart=' + startTime;
 
     fetch(url)
