@@ -14,7 +14,6 @@
     <div id="driverStandings">
         <ol>
             <li>Verstappen</li>
-            <li>Norris!!</li>
         </ol>
     </div>
     <div id="middleContainer">
@@ -22,14 +21,11 @@
             <a href="{{ url_for('index') }}">
                 <i class="fa-solid fa-arrow-left fa-xl"></i>
             </a></button>
+
             <div class="infoBarItem" id="countryName"></div>
             <script>getCurrentCountryName()</script>
-            <div class="infoBarItem">Lap 5/57</div>
-        </div>
-        <div id="buttonDiv">
-            <button class="nextPreviousButtons" name="start"
-                onclick="fetchCoordinates(this.getAttribute('data-formatted-time'), 0)">Start</button>
-            <!--Should be this.getAttribute('data-formatted-time')-->
+            <div class="infoBarItem">Lap ?/?</div>  
+
         </div>
         <div id="raceTrack">
             <div id="testDriver"></div>
@@ -49,10 +45,6 @@
             <!--Ladda in befintliga förare i specifika racet här -->
             <input type="checkbox" id="driver1" name="driver1" checked>
             <label for="vehicle1"> Verstappen </label><br>
-            <input type="checkbox" id="driver2" name="driver2" checked>
-            <label for="vehicle2"> Sainz</label><br>
-            <input type="checkbox" id="driver3" name="driver3" checked>
-            <label for="vehicle3"> Bottas </label><br>
         </form>
     </div>
 </main>

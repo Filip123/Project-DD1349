@@ -16,8 +16,6 @@ html, body{
     overflow-x: hidden;
     background-color: var(--stdWhite);
     font-family: "F1";
-    cursor: url(https://cdn.custom-cursor.com/db/8020/32/sport-formula-1-cursor.png), default !important;
-
 }
 
 header{
@@ -62,7 +60,7 @@ a{
 
 
 ::-webkit-scrollbar {
-	width: 0.8rem; /* Note to self, keep this at 0.5*/
+	width: 0.8rem;
 	background-color: var(--secondaryColor);
 	opacity: 0.1;
 }
