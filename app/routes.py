@@ -3,6 +3,7 @@ from app import app
 import app.src.visualCar as visualCar
 import app.src.databaseAccess as databaseAccess
 from flask import jsonify, render_template, request
+import datetime
 
 #Home page
 @app.route("/")
@@ -33,8 +34,14 @@ def get_startTime():
     print("session key: " + sessionKey)
     
     startTime = databaseAccess.fetch_start_time(sessionKey)[0]
-    print("startTime: " + startTime)
-    return startTime 
+
+    # Convert start_time to a datetime object
+    start_datetime = datetime.datetime.strptime(startTime, '%Y-%m-%dT%H:%M:%S%z')
+
+    # Remove timezone information and convert it back to the desired format
+    start_time_corrected = start_datetime.strftime('%Y-%m-%dT%H:%M:%S')
+    print("corrected start time" + start_time_corrected)
+    return start_time_corrected
 
 
 def movebackwards():

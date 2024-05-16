@@ -30,7 +30,7 @@ def initialize_database(schema_file, db_file):
     conn.close()
 
 # Call this function once at the initialization phase of your application
-initialize_database('schema.sql', 'app/src/database/database.db')
+initialize_database('app/src/database/schema.sql', 'app/src/database/database.db')
 
 
 #Session
